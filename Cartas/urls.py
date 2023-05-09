@@ -1,8 +1,8 @@
 from rest_framework import routers
-from .api import ProjectViewSet
+from .api import CartasViewSet
 
 router = routers.DefaultRouter()
 
-router.register('api/cards', ProjectViewSet, 'Cards')
+router.register('api/cards', CartasViewSet, 'Cartas')
 
 urlpatterns = router.urls
