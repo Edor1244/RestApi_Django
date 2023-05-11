@@ -3,6 +3,6 @@ from .api import CartasViewSet
 
 router = routers.DefaultRouter()
 
-router.register('api/cards', CartasViewSet, 'Cartas')
+router.register('api/Cartas', CartasViewSet, 'Cartas')
 
 urlpatterns = router.urls
