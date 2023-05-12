@@ -7,7 +7,7 @@ from .models import UserCards
 class CartasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cartas
-        fields = ('users')
+        fields = ('user')
         read_only_fields = ('created_at', )
 
 
@@ -21,5 +21,5 @@ class UserSerializer(serializers.ModelSerializer):
 class UserCardsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserCards
-        fields = ('id', 'name', 'cardType', 'description')
+        fields = ('user', 'name', 'cardType', 'description')
         read_only_fields = ('created_at', )
