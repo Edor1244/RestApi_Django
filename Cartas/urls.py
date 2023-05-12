@@ -1,7 +1,5 @@
 from rest_framework import routers
-from .api import CartasViewSet
-from .api import UserViewSet
-from .api import UserCardsViewSet
+from .api import CartasViewSet, UserViewSet, UserCardsViewSet
 
 router = routers.DefaultRouter()
 

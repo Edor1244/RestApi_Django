@@ -1,25 +1,27 @@
 from rest_framework import serializers
-from .models import User
-from .models import Cartas
-from .models import UserCards
+from .models import User, Card, UserCard
 
 
-class CartasSerializer(serializers.ModelSerializer):
+class UserCardSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Cartas
-        fields = ('user')
+        model = UserCard
+        fields = ('user', 'name', 'card_type', 'description')
+        read_only_fields = ('created_at', )
+
+
+class CardSerializer(serializers.ModelSerializer):
+    users = UserCardSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Card
+        fields = ('card_id', 'users')
         read_only_fields = ('created_at', )
 
 
 class UserSerializer(serializers.ModelSerializer):
+    User_Cards = UserCardSerializer(many=True, read_only=True)
+
     class Meta:
         model = User
-        fields = ('useriD', 'User_Cards')
-        read_only_fields = ('created_at', )    
-
-
-class UserCardsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserCards
-        fields = ('user', 'name', 'cardType', 'description')
+        fields = ('user_id', 'User_Cards')
         read_only_fields = ('created_at', )
