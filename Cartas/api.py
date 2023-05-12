@@ -7,6 +7,12 @@ from .serializers import UserSerializer
 from .serializers import UserCardsSerializer
 
 
+class CartasViewSet(viewsets.ModelViewSet):
+    queryset = Cartas.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class = UserCardsSerializer
+
+    
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
@@ -19,8 +25,5 @@ class UserCardsViewSet(viewsets.ModelViewSet):
     serializer_class = CartasSerializer
 
 
-class CartasViewSet(viewsets.ModelViewSet):
-    queryset = Cartas.objects.all()
-    permission_classes = [permissions.AllowAny]
-    serializer_class = UserCardsSerializer
+
 
