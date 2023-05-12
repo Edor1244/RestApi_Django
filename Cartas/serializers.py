@@ -5,7 +5,7 @@ from .models import User, Card, UserCard
 class UserCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserCard
-        fields = ('user', 'name', 'card_type', 'description')
+        fields = ('name', 'cardType', 'description')
         read_only_fields = ('created_at', )
 
 
@@ -14,14 +14,14 @@ class CardSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Card
-        fields = ('card_id', 'users')
+        fields = ('cardId', 'users') 
         read_only_fields = ('created_at', )
 
 
 class UserSerializer(serializers.ModelSerializer):
-    User_Cards = UserCardSerializer(many=True, read_only=True)
+    UserCards = UserCardSerializer(many=True, read_only=True)
 
     class Meta:
         model = User
-        fields = ('user_id', 'User_Cards')
+        fields = ('userId', 'userCard')
         read_only_fields = ('created_at', )
